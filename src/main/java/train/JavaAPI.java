@@ -47,7 +47,6 @@ public class JavaAPI {
 
     public static void testURL(String strUrl) throws Exception {
 
-        System.setProperty("java.net.useSystemProxies", "true");
         try {
             URL url = new URL(strUrl);
             //Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost",42209));
@@ -60,5 +59,6 @@ public class JavaAPI {
             e.printStackTrace();
             throw e;
         }
+        System.setProperty("java.net.useSystemProxies", "false");
     }
 }

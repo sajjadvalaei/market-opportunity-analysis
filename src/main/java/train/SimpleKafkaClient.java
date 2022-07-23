@@ -4,6 +4,8 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+import org.apache.kafka.common.serialization.ByteArraySerializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
@@ -12,9 +14,11 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
-public class simpleKafkaClient {
-    public static void main(String[] args) {
+public class SimpleKafkaClient {
+    public static void run(String address) {
+        IKafkaConstants.KAFKA_BROKERS = address;
         runProducer();
+        System.out.println("salam");
         runConsumer();
     }
 
@@ -56,7 +60,7 @@ public class simpleKafkaClient {
 
         for (int index = 0; index < IKafkaConstants.MESSAGE_COUNT; index++) {
             ProducerRecord<String, String> record = new ProducerRecord<String, String>(IKafkaConstants.TOPIC_NAME,
-                    "This is record " + index);
+                    "This is record ");
             try {
                 RecordMetadata metadata = producer.send(record).get();
                 System.out.println("Record sent with key " + index + " to partition " + metadata.partition()
@@ -98,8 +102,6 @@ class ConsumerCreator {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, IKafkaConstants.GROUP_ID_CONFIG);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, IKafkaConstants.MAX_POLL_RECORDS);
-        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, IKafkaConstants.OFFSET_RESET_EARLIER);
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList(IKafkaConstants.TOPIC_NAME));
@@ -109,8 +111,9 @@ class ConsumerCreator {
 
 }
 
-interface IKafkaConstants {
-    public static String KAFKA_BROKERS = "localhost:9092";
+class IKafkaConstants {
+    public static String KAFKA_BROKERS;
+
 
     public static Integer MESSAGE_COUNT=1000;
 
