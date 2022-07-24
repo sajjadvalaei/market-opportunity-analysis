@@ -36,7 +36,7 @@ public class BinanceDataCollectorTest {
         dataCollector.getLastCandlestick("WRONG");
     }
 
-    @Test // take 1 minute to execute
+//    @Test // take 1 minute to execute
     public void checkTwoNearRequestDifference_shouldBeSmallMustNotBeEqual() throws InterruptedException {
         Candlestick oldCandle = dataCollector.getLastCandlestick(BINANCE_KEY);
         Thread.sleep(DATA_UPDATE_INTERVAL+1000);

@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BinanceDataCollector  implements  DataCollector{
+public class BinanceDataCollector  implements  DataCollector {
     static DataCollector dataCollector;
     private BinanceApiRestClient client;
-    private BinanceDataCollector(){
+    private BinanceDataCollector() {
         Configuration.setSystemProxy();
         dataCollector = this;
         client = getClientFromFactory();
@@ -34,7 +34,7 @@ public class BinanceDataCollector  implements  DataCollector{
     }
 
     private com.binance.api.client.domain.market.Candlestick getLastOfCandlestickList(List list){
-        return (com.binance.api.client.domain.market.Candlestick) list.get(list.size()-1);
+        return (com.binance.api.client.domain.market.Candlestick) list.get(list.size() - 1);
     }
 
     private BinanceApiRestClient getClientFromFactory() {

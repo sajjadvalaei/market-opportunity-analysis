@@ -10,7 +10,15 @@ public class Candlestick{
 
     private String key;
 
+    // this constructor made for its Deserializer
+    public Candlestick(){
+        setAllCandlestickParameters(0.0,0.0,0.0,0.0,0L,0L,"");
+    }
+
     public Candlestick(Double open, Double close, Double high, Double low, Long openTime, Long closeTime, String key) {
+        setAllCandlestickParameters(open,close,high,low,openTime,closeTime,key);
+    }
+    private void setAllCandlestickParameters(Double open, Double close, Double high, Double low, Long openTime, Long closeTime, String key) {
         this.open = open;
         this.close = close;
         this.high = high;
@@ -46,6 +54,16 @@ public class Candlestick{
 
     public String getKey() {
         return key;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if( !(o instanceof Candlestick ))
+            return false;
+        Candlestick co = (Candlestick) o;
+        return this.getOpenTime().equals(co.getOpenTime()) &&
+                this.getKey().equals(co.getKey());
+
     }
 
 }

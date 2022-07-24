@@ -32,9 +32,9 @@ public class JavaAPI {
 
     private static void generic(MarketDataService marketDataService) throws IOException {
 
-        Ticker ticker = marketDataService.getTicker(CurrencyPair.BTC_USD);
+        Ticker ticker;// = marketDataService.getTicker(CurrencyPair.BTC_USD);
 
-        System.out.println(ticker.toString());
+        //System.out.println(ticker.toString());
     }
 
     private static void raw(BitmexMarketDataServiceRaw marketDataService) throws IOException {
