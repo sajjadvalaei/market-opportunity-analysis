@@ -1,9 +1,7 @@
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.domain.market.CandlestickInterval;
-import com.binance.api.client.domain.market.TickerStatistics;
 import config.Configuration;
-import data.BinanceDataCollector;
 import module.Candlestick;
 
 import java.util.List;
