@@ -1,3 +1,5 @@
+package auxiliary;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.testcontainers.containers.JdbcDatabaseContainer;

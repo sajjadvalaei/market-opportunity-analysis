@@ -1,3 +1,5 @@
+package auxiliary;
+
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.domain.market.CandlestickInterval;
@@ -6,7 +8,7 @@ import module.Candlestick;
 
 import java.util.List;
 
-public class FakeBinanceDataCollector {
+public class BinanceDataCollector {
     public static Candlestick getLastCandlestick(String binanceKey) {
         Configuration.setSystemProxy();
         BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();

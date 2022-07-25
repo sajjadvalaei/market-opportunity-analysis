@@ -1,3 +1,5 @@
+package auxiliary;
+
 import kafka.CandlestickDeserializer;
 import module.Candlestick;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -11,9 +13,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.Random;
 
-public class FakeConsumer {
+public class Consumer {
     public static final Object GROUP_ID_CONFIG = "test-group-id";
 
     public static void checkRecordListEquality

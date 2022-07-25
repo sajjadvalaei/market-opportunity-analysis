@@ -1,6 +1,7 @@
 import ir.sahab.kafkarule.KafkaRule;
 import kafka.Producer;
-import module.Candlestick;
+import auxiliary.Candlestick;
+import auxiliary.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -40,14 +41,14 @@ public class CandlestickProducerConsumerKafkaTest {
     public void oneCandleSendCheck(){
         checkTopicIsClear();
 
-        Candlestick candlestick = FakeCandlestick.createRandomCandlestick();
+        module.Candlestick candlestick = Candlestick.createRandomCandlestick();
         mainProducer.send(TOPIC_NAME, candlestick);
         mainProducer.close();
 
 
-        KafkaConsumer<String, Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
+        KafkaConsumer<String, module.Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
         consumer.subscribe(Collections.singletonList(TOPIC_NAME));
-        List<ConsumerRecord<String, Candlestick> > records = FakeConsumer.getAllRecords(consumer, 1);
+        List<ConsumerRecord<String, module.Candlestick> > records = Consumer.getAllRecords(consumer, 1);
         Assert.assertEquals(1,records.size());
         records.forEach( record->
                 Assert.assertEquals(record.value(),candlestick) );
@@ -59,21 +60,21 @@ public class CandlestickProducerConsumerKafkaTest {
     public void severalCandleListSendTest_shouldBeOrdered(){
         checkTopicIsClear();
 
-        List<Candlestick> rCandleList = FakeCandlestick.randomCandlestickList(RECORD_NUMBER);
+        List<module.Candlestick> rCandleList = Candlestick.randomCandlestickList(RECORD_NUMBER);
         mainProducer.send(TOPIC_NAME,rCandleList);
         mainProducer.close();
 
-        KafkaConsumer<String, Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
+        KafkaConsumer<String, module.Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
         consumer.subscribe(Collections.singletonList(TOPIC_NAME));
-        List<ConsumerRecord<String, Candlestick> > records = FakeConsumer.getAllRecords(consumer, RECORD_NUMBER);
+        List<ConsumerRecord<String, module.Candlestick> > records = Consumer.getAllRecords(consumer, RECORD_NUMBER);
         Assert.assertEquals(RECORD_NUMBER,records.size());
-        FakeConsumer.checkRecordListEquality(records,rCandleList);
+        Consumer.checkRecordListEquality(records,rCandleList);
         consumer.close();
 
     }
 
-    private KafkaConsumer<String, Candlestick> createCandlestickConsumerFromCurrentServer() {
-        return  FakeConsumer.createCandlestickConsumer(kafkaRule.getBrokerAddress());
+    private KafkaConsumer<String, module.Candlestick> createCandlestickConsumerFromCurrentServer() {
+        return  Consumer.createCandlestickConsumer(kafkaRule.getBrokerAddress());
     }
 
 

@@ -1,8 +1,9 @@
 
+import auxiliary.AbstractContainerDatabaseTest;
+import auxiliary.Notification;
+import database.MySQLDatabase;
 import org.apache.commons.lang3.SystemUtils;
-import org.junit.Assert;
-import org.junit.Assume;
-import org.junit.Test;
+import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.MySQLContainer;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 public class DatabaseTest extends AbstractContainerDatabaseTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseTest.class);
-    private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:8.0.29");
+    private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:5.5");
 
     /*
      * Ordinarily you wouldn't try and run multiple containers simultaneously - this is just used for testing.
@@ -31,21 +32,42 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
     @ClassRule
     public static MySQLContainer<?> mysqlCustomConfig = new MySQLContainer<>(DockerImageName.parse("mysql:5.6"))
                                                               .withConfigurationOverride("somepath/mysql_conf_override");
+
     */
-    @Test
-    public void testSimple() throws SQLException {
-        try (
-                MySQLContainer<?> mysql = new MySQLContainer<>(MYSQL_80_IMAGE)
-                        .withLogConsumer(new Slf4jLogConsumer(logger))
-        ) {
-            mysql.start();
-
-            ResultSet resultSet = performQuery(mysql, "SELECT 1");
-            int resultSetInt = resultSet.getInt(1);
-
-            Assert.assertEquals("A basic SELECT query succeeds", 1, resultSetInt);
-        }
+    @ClassRule
+    public static MySQLContainer<?> mysql = new MySQLContainer<>(MYSQL_80_IMAGE)
+            .withLogConsumer(new Slf4jLogConsumer(logger));
+    static MySQLDatabase database;
+    @BeforeClass
+    public static void beforeClass(){
+        database = MySQLDatabase.start();
+        mysql.start();
     }
+
+    @Before
+    public void beforeTest(){
+        database = MySQLDatabase.getDatabase();
+    }
+    @Test
+    public void checkTestContainerWork() throws SQLException {
+
+        ResultSet resultSet = performQuery(mysql, "SELECT 1");
+        int resultSetInt = resultSet.getInt(1);
+
+        Assert.assertEquals("A basic SELECT query succeeds", 1, resultSetInt);
+    }
+
+    @Test
+    public void sendRandomNotificationToDatabase() throws SQLException {
+        module.Notification notification = Notification.createRandomNotification();
+        database.save(notification);
+
+        ResultSet resultSet = performQuery(mysql, Notification.selectAllQueryStringStatement());
+        Assert.assertTrue(Notification.resultSetContains(resultSet,notification));
+    }
+
+
+
 
     @Test
     public void testSpecificVersion() throws SQLException {

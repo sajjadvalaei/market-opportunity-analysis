@@ -1,7 +1,7 @@
 import com.binance.api.client.exception.BinanceApiException;
-import data.BinanceDataCollector;
 import data.DataCollector;
 import module.Candlestick;
+import auxiliary.BinanceDataCollector;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +13,12 @@ public class BinanceDataCollectorTest {
     private static DataCollector dataCollector;
     @Before
     public void setDataCollector(){
-        dataCollector = BinanceDataCollector.loadDataCollector();
+        dataCollector = data.BinanceDataCollector.loadDataCollector();
     }
 
     @Test
     public void checkRequestWithApiDifference_shouldBeEqual() {
-        Candlestick checkCandle = FakeBinanceDataCollector.getLastCandlestick(BINANCE_KEY);
+        Candlestick checkCandle = BinanceDataCollector.getLastCandlestick(BINANCE_KEY);
         Candlestick candle = dataCollector.getLastCandlestick(BINANCE_KEY);
         checkTwoNearCandleDifference_ShouldBeSmall(candle,checkCandle,0.0001);
     }
