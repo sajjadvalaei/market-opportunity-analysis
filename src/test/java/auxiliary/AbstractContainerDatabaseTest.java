@@ -16,10 +16,7 @@ public abstract class AbstractContainerDatabaseTest {
         DataSource ds = getDataSource(container);
         Statement statement = ds.getConnection().createStatement();
         statement.execute(sql);
-        ResultSet resultSet = statement.getResultSet();
-
-        resultSet.next();
-        return resultSet;
+        return statement.getResultSet();
     }
 
     protected DataSource getDataSource(JdbcDatabaseContainer<?> container) {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class Consumer {
+public class ConsumerAux {
     public static final Object GROUP_ID_CONFIG = "test-group-id";
 
     public static void checkRecordListEquality

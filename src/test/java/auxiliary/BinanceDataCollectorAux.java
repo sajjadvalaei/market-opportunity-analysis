@@ -8,7 +8,7 @@ import module.Candlestick;
 
 import java.util.List;
 
-public class BinanceDataCollector {
+public class BinanceDataCollectorAux {
     public static Candlestick getLastCandlestick(String binanceKey) {
         Configuration.setSystemProxy();
         BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();

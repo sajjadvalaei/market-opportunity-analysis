@@ -1,8 +1,9 @@
 
 import auxiliary.AbstractContainerDatabaseTest;
-import auxiliary.Notification;
+import auxiliary.MySQLDatabaseAux;
+import auxiliary.NotificationAux;
 import database.MySQLDatabase;
-import org.apache.commons.lang3.SystemUtils;
+import module.Notification;
 import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,12 +13,18 @@ import org.testcontainers.utility.DockerImageName;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class DatabaseTest extends AbstractContainerDatabaseTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseTest.class);
     private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:5.5");
+    private static final String DATABASE_NAME = "test";
+
+    private static final String USER = "sajjad";
+    private static final String PASSWORD = "0022701303";
+    private static final int NOTIFICATION_NUM = 100;
 
     /*
      * Ordinarily you wouldn't try and run multiple containers simultaneously - this is just used for testing.
@@ -36,12 +43,16 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
     */
     @ClassRule
     public static MySQLContainer<?> mysql = new MySQLContainer<>(MYSQL_80_IMAGE)
+            .withDatabaseName(DATABASE_NAME)
+            .withUsername(USER)
+            .withPassword(PASSWORD)
             .withLogConsumer(new Slf4jLogConsumer(logger));
     static MySQLDatabase database;
     @BeforeClass
     public static void beforeClass(){
-        database = MySQLDatabase.start();
         mysql.start();
+        MySQLDatabaseAux.changeJDBCURLForTest(mysql.getJdbcUrl());
+        MySQLDatabase.start(DATABASE_NAME);
     }
 
     @Before
@@ -52,57 +63,39 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
     public void checkTestContainerWork() throws SQLException {
 
         ResultSet resultSet = performQuery(mysql, "SELECT 1");
+        resultSet.next();
         int resultSetInt = resultSet.getInt(1);
 
         Assert.assertEquals("A basic SELECT query succeeds", 1, resultSetInt);
     }
 
     @Test
-    public void sendRandomNotificationToDatabase() throws SQLException {
-        module.Notification notification = Notification.createRandomNotification();
-        database.save(notification);
+    public void storeRandomNotificationInDatabase() throws SQLException {
+        Notification notification = NotificationAux.createRandomNotification();
+        database.insert(notification);
 
-        ResultSet resultSet = performQuery(mysql, Notification.selectAllQueryStringStatement());
-        Assert.assertTrue(Notification.resultSetContains(resultSet,notification));
+        ResultSet resultSet = performQuery(mysql, NotificationAux.selectAllQueryStringStatement());
+        Assert.assertTrue(NotificationAux.resultSetContains(resultSet,notification));
     }
 
-
-
-
     @Test
-    public void testSpecificVersion() throws SQLException {
-        try (
-                MySQLContainer<?> mysqlOldVersion = new MySQLContainer<>(MYSQL_80_IMAGE)
-                        .withConfigurationOverride("somepath/mysql_conf_override")
-                        .withLogConsumer(new Slf4jLogConsumer(logger))
-        ) {
-            mysqlOldVersion.start();
+    public void storeSeveralRandomNotificationInDatabase() throws SQLException{
+        List<Notification> notifications = NotificationAux.createRandomNotificationList(NOTIFICATION_NUM);
+        notifications.forEach(notification -> database.insert(notification) );
 
-            ResultSet resultSet = performQuery(mysqlOldVersion, "SELECT VERSION()");
-            String resultSetString = resultSet.getString(1);
-
-            Assert.assertTrue(
-                    "The database version can be set using a container rule parameter",
-                    resultSetString.startsWith("5.6")
-            );
+        ResultSet resultSet = performQuery(mysql, NotificationAux.selectAllQueryStringStatement());
+        for (Notification notif : notifications) {
+            Assert.assertTrue(NotificationAux.resultSetContains(resultSet, notif));
         }
     }
 
     @Test
-    public void testMySQLWithCustomIniFile() throws SQLException {
-        Assume.assumeFalse(SystemUtils.IS_OS_WINDOWS);
+    public void getListOfNotifications(){
+        List<Notification> notifications = NotificationAux.createRandomNotificationList(NOTIFICATION_NUM);
+        notifications.forEach(notification -> database.insert(notification) );
 
-        try (
-                MySQLContainer<?> mysqlCustomConfig = new MySQLContainer<>(MYSQL_80_IMAGE)
-                        .withConfigurationOverride("somepath/mysql_conf_override")
-        ) {
-            mysqlCustomConfig.start();
-
-            ResultSet resultSet = performQuery(mysqlCustomConfig, "SELECT @@GLOBAL.innodb_file_format");
-            String result = resultSet.getString(1);
-
-            Assert.assertEquals("The InnoDB file format has been set by the ini file content", "Barracuda", result);
-        }
-
+        List<Notification> resultList = database.getNotificationList();
+        Assert.assertTrue(resultList.containsAll(notifications));
     }
+
 }

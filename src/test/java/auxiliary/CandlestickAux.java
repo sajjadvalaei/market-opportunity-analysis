@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Candlestick {
+public class CandlestickAux {
 
     private static final Random random = new Random();
     public static module.Candlestick createRandomCandlestick() {
