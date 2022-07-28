@@ -4,22 +4,34 @@ package module;
 public class Period {
     private final int amount;
     private final Interval interval;
-    public Period(int amount, Interval interval) {
+    private final OHLC ohlc;
+
+    public Period(int amount, Interval interval, OHLC ohlc) {
         this.amount = amount;
         this.interval = interval;
+        this.ohlc = ohlc;
     }
-
+    public int getAmount() {
+        return amount;
+    }
+    public Interval getInterval() {
+        return interval;
+    }
+    public OHLC getOhlc(){
+        return ohlc;
+    }
 
     public static Period parsePeriod(String s) {
         String[] orders = s.split(" ");
         int amount = Integer.parseInt(orders[0]);
         Interval interval = Interval.valueOf(orders[1]);
-        return new Period(amount,interval);
+        OHLC ohlc = OHLC.valueOf(orders[2]);
+        return new Period(amount,interval, ohlc);
     }
 
     @Override
     public String toString(){
-       return amount +" "+ interval;
+       return amount +" "+ interval+ " "+ ohlc;
     }
 
     @Override
@@ -27,6 +39,8 @@ public class Period {
         if( !(other instanceof  Period))
             return false;
         Period o = (Period) other;
-        return o.amount == amount && interval.equals(o.interval) ;
+        return o.amount == amount 
+                && interval.equals(o.interval)
+                && ohlc.equals(o.ohlc);
     }
 }

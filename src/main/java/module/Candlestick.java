@@ -8,7 +8,7 @@ public class Candlestick{
     private Long openTime;
     private Long closeTime;
 
-    private String key;
+    private String symbol;
 
     // this constructor made for its Deserializer
     public Candlestick(){
@@ -25,35 +25,35 @@ public class Candlestick{
         this.low = low;
         this.openTime = openTime;
         this.closeTime = closeTime;
-        this.key = key;
+        this.symbol = key;
     }
-
     public Double getOpen() {
         return open;
     }
-
     public Double getClose() {
         return close;
     }
-
     public Double getHigh() {
         return high;
     }
-
     public Double getLow() {
         return low;
     }
-
     public Long getOpenTime() {
         return openTime;
     }
-
     public Long getCloseTime() {
         return closeTime;
     }
 
-    public String getKey() {
-        return key;
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    @Override
+    public String toString(){
+        return symbol + " " + openTime + " " + open + " " + close + " " + high + " " + low + " ";
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Candlestick{
             return false;
         Candlestick co = (Candlestick) o;
         return this.getOpenTime().equals(co.getOpenTime()) &&
-                this.getKey().equals(co.getKey());
+                this.getSymbol().equals(co.getSymbol());
 
     }
 

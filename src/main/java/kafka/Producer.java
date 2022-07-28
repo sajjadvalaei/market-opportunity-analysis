@@ -47,7 +47,7 @@ public class Producer{
     public void send(String topicName, Candlestick candlestick) {
         try {
             ProducerRecord<String, Candlestick> record =
-                    new ProducerRecord<>(topicName,candlestick.getKey(),candlestick);
+                    new ProducerRecord<>(topicName,candlestick.getSymbol(),candlestick);
             RecordMetadata metadata = kafkaProducer.send(record).get();
         }
         catch (ExecutionException | InterruptedException e) {

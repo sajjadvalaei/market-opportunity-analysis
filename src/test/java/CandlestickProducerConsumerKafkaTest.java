@@ -2,6 +2,7 @@ import ir.sahab.kafkarule.KafkaRule;
 import kafka.Producer;
 import auxiliary.CandlestickAux;
 import auxiliary.ConsumerAux;
+import module.Candlestick;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -23,7 +24,7 @@ public class CandlestickProducerConsumerKafkaTest {
     @ClassRule
     public static KafkaRule kafkaRule = new KafkaRule();
 
-    private static Producer mainProducer;
+    private Producer mainProducer;
 
 
     @BeforeClass
@@ -46,9 +47,9 @@ public class CandlestickProducerConsumerKafkaTest {
         mainProducer.close();
 
 
-        KafkaConsumer<String, module.Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
+        KafkaConsumer<String, Candlestick> consumer = createCandlestickConsumerFromCurrentServer();
         consumer.subscribe(Collections.singletonList(TOPIC_NAME));
-        List<ConsumerRecord<String, module.Candlestick> > records = ConsumerAux.getAllRecords(consumer, 1);
+        List<ConsumerRecord<String, Candlestick> > records = ConsumerAux.getAllRecords(consumer, 1);
         Assert.assertEquals(1,records.size());
         records.forEach( record->
                 Assert.assertEquals(record.value(),candlestick) );

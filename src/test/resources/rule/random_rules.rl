@@ -1,0 +1,1 @@
+SMA 10 D OPEN > 11 H OPEN

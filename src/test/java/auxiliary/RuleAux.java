@@ -1,10 +1,16 @@
 package auxiliary;
 
 import module.Interval;
+import module.OHLC;
 import module.Period;
 import rule.Rule;
 import rule.SMARule;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class RuleAux {
@@ -16,6 +22,22 @@ public class RuleAux {
 
     private static Period randomPeriod() {
         return new Period(random.nextInt(MAXIMUM_HOUR_LIMIT),
-                Interval.values()[random.nextInt(Interval.values().length)]);
+                Interval.values()[random.nextInt(Interval.values().length)],
+                OHLC.values()[random.nextInt(OHLC.values().length)]);
+    }
+
+    public static List<Rule> createRandomList(int num) {
+        List<Rule> list = new ArrayList<>();
+        while(num > 0){
+            list.add( createRandomRule() );
+            num--;
+        }
+        return list;
+    }
+
+    public static void writeToFile(List<Rule> rules, File file) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(file);
+        rules.forEach(rule-> writer.println(rule));
+        writer.close();
     }
 }

@@ -1,12 +1,12 @@
 package rule;
 
 import module.Period;
-import scala.concurrent.java8.FuturesConvertersImpl;
 
 import java.util.Arrays;
 
 public class SMARule implements Rule {
     private Period[] period = new Period[2];
+    private final static RuleMemoryService memory = new SMARuleMemoryService();
     public SMARule(Period period0, Period period1) {
         period[0] = period0;
         period[1] = period1;
@@ -15,9 +15,9 @@ public class SMARule implements Rule {
     public static SMARule parseSMA(String input) {
         Period[] periods = new Period[2];
         String[] orders = input.split(" ");
-        int i = getSwapIndex(orders[3]);
-        periods[i] = Period.parsePeriod(orders[1]+" "+orders[2]);
-        periods[1-i] = Period.parsePeriod(orders[4]+" "+orders[5]);
+        int i = getSwapIndex(orders[4]);
+        periods[i] = Period.parsePeriod(orders[1]+" "+orders[2]+" "+orders[3]);
+        periods[1-i] = Period.parsePeriod(orders[5]+" "+orders[6]+" "+orders[7]);
         return new SMARule(periods[0],periods[1]);
     }
 
@@ -28,9 +28,15 @@ public class SMARule implements Rule {
     }
 
     @Override
-    public boolean satisfy() {
-        return false;
+    public boolean satisfy(String symbol) {
+        return memory.getAverage(period[0],symbol) < memory.getAverage(period[1],symbol);
     }
+
+    @Override
+    public RuleMemoryService getMemory() {
+        return memory;
+    }
+
     @Override
     public String toString(){
         return "SMA " + period[0] + " < " + period[1];
