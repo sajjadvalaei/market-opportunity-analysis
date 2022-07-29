@@ -7,9 +7,8 @@ import com.binance.api.client.exception.BinanceApiException;
 import config.Configuration;
 import module.Candlestick;
 
+import java.net.SocketTimeoutException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class BinanceDataCollector  implements  DataCollector {
     static DataCollector dataCollector;
@@ -21,7 +20,7 @@ public class BinanceDataCollector  implements  DataCollector {
     }
 
 
-    public static DataCollector loadDataCollector() {
+    public static DataCollector getDataCollector() {
         if( dataCollector == null)
             dataCollector = new BinanceDataCollector();
         return dataCollector;
@@ -29,12 +28,17 @@ public class BinanceDataCollector  implements  DataCollector {
 
    @Override
     public Candlestick getLastCandlestick(String symbol)  throws BinanceApiException  {
-        List list = client.getCandlestickBars(symbol, CandlestickInterval.ONE_MINUTE);
-        return makeCandlestick( getLastOfCandlestickList( list ), symbol);
+        try {
+            System.out.println("saam");
+            List list = client.getCandlestickBars(symbol, CandlestickInterval.ONE_MINUTE);
+            return makeCandlestick(getLastOfCandlestickList(list), symbol);
+        } catch (Exception e){
+            return getLastCandlestick(symbol);
+        }
     }
 
     private com.binance.api.client.domain.market.Candlestick getLastOfCandlestickList(List list){
-        return (com.binance.api.client.domain.market.Candlestick) list.get(list.size() - 1);
+        return (com.binance.api.client.domain.market.Candlestick) list.get(list.size() - 2);
     }
 
     private BinanceApiRestClient getClientFromFactory() {

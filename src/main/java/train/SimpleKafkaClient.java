@@ -22,6 +22,10 @@ public class SimpleKafkaClient {
         runConsumer();
     }
 
+    public static void main(String[] args) {
+        run("localhost:9092");
+    }
+
     static void runConsumer() {
         KafkaConsumer<String, String> consumer = ConsumerCreator.createConsumer();
 

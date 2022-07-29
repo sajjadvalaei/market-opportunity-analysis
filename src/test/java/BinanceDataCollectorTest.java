@@ -13,7 +13,7 @@ public class BinanceDataCollectorTest {
     private static DataCollector dataCollector;
     @Before
     public void setDataCollector(){
-        dataCollector = data.BinanceDataCollector.loadDataCollector();
+        dataCollector = data.BinanceDataCollector.getDataCollector();
     }
 
     @Test

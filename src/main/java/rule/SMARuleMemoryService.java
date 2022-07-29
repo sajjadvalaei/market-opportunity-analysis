@@ -20,7 +20,10 @@ public class SMARuleMemoryService implements RuleMemoryService {
     }
 
     private void createSymbol(String symbol) {
-        listMap.put(symbol, new MyLinkedList());
+        MyLinkedList list = new MyLinkedList();
+        listMap.put(symbol, list);
+        for(int i = 0;i < 60*48; i++)
+            list.storeLastMinute(new Candlestick());
     }
 
     @Override
@@ -30,6 +33,14 @@ public class SMARuleMemoryService implements RuleMemoryService {
         Double[] data = new Double[]{ candle.getOpen(), candle.getClose(),
                                         candle.getHigh(), candle.getLow()};
         return data[period.getOhlc().ordinal()];
+    }
+
+    @Override
+    public Candlestick getLast(String symbol){
+        if( !listMap.containsKey(symbol) )
+            return new Candlestick();
+        MyLinkedList list = listMap.get(symbol);
+        return list.getLastCandlestick();
     }
 
 
@@ -50,9 +61,11 @@ public class SMARuleMemoryService implements RuleMemoryService {
             for(int ind = 0; ind < amount; ind++){
                 candles.add(iterator.next());
             }
+            System.out.println(amount + " " + interval + " " + candles);
             return getAverageCandlestickOfList(candles);
         }
         private void storeLastMinute(Candlestick candle) {
+            System.out.println(candle);
             list[0].addFirst(candle);
             if (list[0].size() % 60 == 0)
                 storeLastHour();
@@ -76,13 +89,21 @@ public class SMARuleMemoryService implements RuleMemoryService {
                 data[2] += candle.getHigh();
                 data[3] += candle.getLow();
             });
-            for (int i = 0; i < 4; i++)
-                data[i] = data[i]/ size;
+            System.out.print("data:");
+            for (int i = 0; i < 4; i++) {
+                data[i] = data[i] / size;
+                System.out.print(data[i]);
+            }
+            System.out.println();
             Candlestick candle =
                     new Candlestick (data[0], data[1], data[2], data[3],
                             candles.get(0).getOpenTime(), candles.get(size-1).getCloseTime(),
                             candles.get(0).getSymbol());
             return candle;
+        }
+
+        public Candlestick getLastCandlestick() {
+            return list[0].getFirst();
         }
     }
 

@@ -26,14 +26,14 @@ public class ConsumerAux {
 
 
 
-    public static List<ConsumerRecord<String, Candlestick> > getAllRecords(KafkaConsumer<String, Candlestick> consumer, int numRecord) {
-        List<ConsumerRecord<String, Candlestick> > retRecords = new ArrayList<>();
+    public static List<Candlestick> getAllRecords(KafkaConsumer<String, Candlestick> consumer, int numRecord) {
+        List<Candlestick> retCandles= new ArrayList<>();
         while(numRecord>0){
             ConsumerRecords<String, Candlestick> records = consumer.poll(Duration.ofMillis(1000));
             numRecord -= records.count();
-            records.forEach(record -> retRecords.add(record));
+            records.forEach(record -> retCandles.add(record.value()));
         }
-        return retRecords;
+        return retCandles;
     }
 
     public static KafkaConsumer<String, Candlestick> createCandlestickConsumer(String address) {

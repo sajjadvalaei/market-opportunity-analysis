@@ -1,0 +1,2 @@
+SMA 1 D HIGH > 1 D LOW
+SMA 1 M HIGH > 1 M LOW

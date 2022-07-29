@@ -26,9 +26,9 @@ public class BinanceMarketdataDemo {
             //Thread.sleep(1000);
           System.out.println(client.getServerTime());
         //  TickerStatistics tickerStatistics = client.get24HrPriceStatistics("WBTCETH");
-          List<Candlestick> candlestickList = client.getCandlestickBars("WBTCETH",CandlestickInterval.ONE_MINUTE);
+          List<Candlestick> candlestickList = client.getCandlestickBars("USDTBIDR",CandlestickInterval.ONE_MINUTE);
 
-          System.out.println(candlestickList.get(candlestickList.size()-1));
+          System.out.println(candlestickList.get(candlestickList.size()-2));
 
             //System.out.println(tickerStatistics);
         //}

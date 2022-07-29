@@ -1,4 +1,4 @@
-package controller;
+package api;
 
 import api.StandardResponse;
 import api.StatusResponse;
@@ -8,10 +8,10 @@ import module.Notification;
 
 import java.util.List;
 
+import static config.Configuration.DATABASE_NAME;
 import static spark.Spark.get;
 
 public class APIHandler {
-    private static final String DATABASE_NAME = "Market";
     static MySQLDatabase database;
     static{
         MySQLDatabase.start(DATABASE_NAME);

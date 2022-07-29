@@ -53,7 +53,9 @@ public class Candlestick{
 
     @Override
     public String toString(){
-        return symbol + " " + openTime + " " + open + " " + close + " " + high + " " + low + " ";
+        return symbol + " " + openTime + " "
+                + open + " " + close + " "
+                + high + " " + low;
     }
 
     @Override

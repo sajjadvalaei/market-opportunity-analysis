@@ -9,4 +9,6 @@ public interface RuleMemoryService {
 
 
     Double getAverage(Period period, String symbol);
+
+    Candlestick getLast(String symbol);
 }
