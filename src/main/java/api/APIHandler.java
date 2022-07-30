@@ -8,15 +8,11 @@ import module.Notification;
 
 import java.util.List;
 
-import static config.Configuration.DATABASE_NAME;
+import static config.Configuration.*;
 import static spark.Spark.get;
 
 public class APIHandler {
-    static MySQLDatabase database;
-    static{
-        MySQLDatabase.start(DATABASE_NAME);
-        database = MySQLDatabase.getDatabase();
-    }
+    static MySQLDatabase database = new MySQLDatabase(DATABASE_URL,USER,PASSWORD,DATABASE_NAME);
     public static void main(String[] args) {
         get("/notifications", (request, response) -> {
             response.type("application/json");

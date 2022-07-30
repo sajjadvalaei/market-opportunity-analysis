@@ -1,41 +1,32 @@
 package database;
 
 import module.Notification;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class MySQLDatabase {
-    private final static Logger LOGGER = LoggerFactory.getLogger(MySQLDatabase.class);
-    public static String DB_URL = "jdbc:mysql://localhost/";
-    static final String USER = "sajjad";
-    static final String PASSWORD = "0022701303";
-    private static MySQLDatabase database;
+    private final static Logger LOGGER = Logger.getLogger(MySQLDatabase.class.getName());
+    private final String databaseURL;
+    private final String user;
+    private final String password;
     private Connection connection;
     private Statement statement;
     private String databaseName;
     private String tableName;
 
-    private MySQLDatabase(String databaseName) {
+    public MySQLDatabase(String databaseURL, String user, String password, String databaseName) {
+        this.databaseURL = databaseURL;
+        this.user = user;
+        this.password = password;
         this.databaseName = databaseName;
         connectToMySQL();
         createStatement();
         createDatabase();
         initDatabase();
         createTables();
-    }
-
-    public static void start(String databaseName) {
-        database = new MySQLDatabase(databaseName);
-    }
-
-    public static MySQLDatabase getDatabase() {
-        if (database == null)
-            throw new NullPointerException("Database has not yet been set, mysql database is not started");
-        return database;
     }
 
     public void insert(Notification notification) {
@@ -46,7 +37,7 @@ public class MySQLDatabase {
             notification.setParameters(pstmt);
             int rowAffected = pstmt.executeUpdate();
         } catch (SQLException e) {
-            LOGGER.error("Error while inserting.", e);
+            LOGGER.severe("Error while inserting. " + e);
             throw new RuntimeException(e);
         }
     }
@@ -74,7 +65,7 @@ public class MySQLDatabase {
             statement.executeUpdate(Notification.createTableStatement());
             tableName = Notification.class.getSimpleName();
         } catch (SQLException e) {
-            LOGGER.error("Could not create table.", e);
+            LOGGER.severe("Could not create table."+ e);
             throw new RuntimeException(e);
         }
     }
@@ -83,7 +74,7 @@ public class MySQLDatabase {
         try {
             statement = connection.createStatement();
         } catch (SQLException e) {
-            LOGGER.error("Could not get the statement.", e);
+            LOGGER.severe("Could not get the statement."+ e);
             throw new RuntimeException(e);
         }
     }
@@ -92,7 +83,7 @@ public class MySQLDatabase {
         try {
             statement.executeUpdate("USE " + databaseName);
         } catch (SQLException e) {
-            LOGGER.error("Could not use database.", e);
+            LOGGER.severe("Could not use database."+ e);
             throw new RuntimeException(e);
         }
     }
@@ -101,16 +92,16 @@ public class MySQLDatabase {
         try {
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
         } catch (SQLException e) {
-            LOGGER.error("Could not make database.", e);
+            LOGGER.severe("Could not make database."+ e);
             throw new RuntimeException(e);
         }
     }
 
     private void connectToMySQL() {
         try {
-            connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            connection = DriverManager.getConnection(databaseURL, user, password);
         } catch (SQLException e) {
-            LOGGER.error("Could not connect to mysql", e);
+            LOGGER.severe("Could not connect to mysql"+ e);
             throw new RuntimeException(e);
         }
     }

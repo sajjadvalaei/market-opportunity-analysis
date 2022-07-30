@@ -35,9 +35,7 @@ public class CandlestickProducerConsumerKafkaTest {
 
     @Before
     public void setup(){
-        mainProducer = Producer.start(kafkaRule.getBrokerAddress());
-        mainProducer = Producer.getProducer();
-
+        mainProducer = new Producer(kafkaRule.getBrokerAddress());
         mainConsumer = new Consumer(kafkaRule.getBrokerAddress(), TOPIC_NAME, GROUP_ID_CONFIG);
     }
 
@@ -111,10 +109,6 @@ public class CandlestickProducerConsumerKafkaTest {
         mainConsumer.close();
     }
 
-
-    private void SimpleKafkaClientTest() {
-    SimpleKafkaClient.run(kafkaRule.getBrokerAddress());
-    }
 
     private void makeTopicDirty() {
         KafkaProducer<byte[], byte[]> kafkaProducer = kafkaRule.newProducer();

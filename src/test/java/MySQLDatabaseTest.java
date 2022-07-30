@@ -2,11 +2,10 @@
 import auxiliary.AbstractContainerDatabaseTest;
 import auxiliary.MySQLDatabaseAux;
 import auxiliary.NotificationAux;
+import data.Sender;
 import database.MySQLDatabase;
 import module.Notification;
 import org.junit.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.utility.DockerImageName;
@@ -14,11 +13,12 @@ import org.testcontainers.utility.DockerImageName;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 
-public class DatabaseTest extends AbstractContainerDatabaseTest {
+public class MySQLDatabaseTest extends AbstractContainerDatabaseTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(DatabaseTest.class);
+    private static final Logger LOGGER = Logger.getLogger(Sender.class.getName());
     private static final DockerImageName MYSQL_80_IMAGE = DockerImageName.parse("mysql:5.5");
     private static final String DATABASE_NAME = "test";
 
@@ -26,38 +26,19 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
     private static final String PASSWORD = "0022701303";
     private static final int NOTIFICATION_NUM = 100;
 
-    /*
-     * Ordinarily you wouldn't try and run multiple containers simultaneously - this is just used for testing.
-     * To avoid memory issues with the default, low memory, docker machine setup, we instantiate only one container
-     * at a time, inside the test methods themselves.
-     */
-    /*
-    @ClassRule
-    public static MySQLContainer<?> mysql = new MySQLContainer<>(MYSQL_IMAGE);
-    @ClassRule
-    public static MySQLContainer<?> mysqlOldVersion = new MySQLContainer<>(DockerImageName.parse("mysql:5.5");)
-    @ClassRule
-    public static MySQLContainer<?> mysqlCustomConfig = new MySQLContainer<>(DockerImageName.parse("mysql:5.6"))
-                                                              .withConfigurationOverride("somepath/mysql_conf_override");
-
-    */
     @ClassRule
     public static MySQLContainer<?> mysql = new MySQLContainer<>(MYSQL_80_IMAGE)
             .withDatabaseName(DATABASE_NAME)
             .withUsername(USER)
-            .withPassword(PASSWORD)
-            .withLogConsumer(new Slf4jLogConsumer(logger));
+            .withPassword(PASSWORD);
     static MySQLDatabase database;
     @BeforeClass
     public static void beforeClass(){
         mysql.start();
-        MySQLDatabaseAux.changeJDBCURLForTest(mysql.getJdbcUrl());
-        MySQLDatabase.start(DATABASE_NAME);
+        database = new MySQLDatabase(mysql.getJdbcUrl(), USER, PASSWORD, DATABASE_NAME);
     }
-
     @Before
     public void beforeTest(){
-        database = MySQLDatabase.getDatabase();
     }
     @Test
     public void checkTestContainerWork() throws SQLException {
@@ -68,7 +49,6 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
 
         Assert.assertEquals("A basic SELECT query succeeds", 1, resultSetInt);
     }
-
     @Test
     public void storeRandomNotificationInDatabase() throws SQLException {
         Notification notification = NotificationAux.createRandomNotification();
@@ -77,7 +57,6 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
         ResultSet resultSet = performQuery(mysql, NotificationAux.selectAllQueryStringStatement());
         Assert.assertTrue(NotificationAux.resultSetContains(resultSet,notification));
     }
-
     @Test
     public void storeSeveralRandomNotificationInDatabase() throws SQLException{
         List<Notification> notifications = NotificationAux.createRandomNotificationList(NOTIFICATION_NUM);
@@ -88,7 +67,6 @@ public class DatabaseTest extends AbstractContainerDatabaseTest {
             Assert.assertTrue(NotificationAux.resultSetContains(resultSet, notif));
         }
     }
-
     @Test
     public void getListOfNotifications(){
         List<Notification> notifications = NotificationAux.createRandomNotificationList(NOTIFICATION_NUM);

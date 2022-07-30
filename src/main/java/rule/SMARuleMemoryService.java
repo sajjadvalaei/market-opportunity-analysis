@@ -4,7 +4,13 @@ import module.Candlestick;
 import module.Interval;
 import module.Period;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class SMARuleMemoryService implements RuleMemoryService {
     SMARuleMemoryService(){
@@ -22,12 +28,10 @@ public class SMARuleMemoryService implements RuleMemoryService {
     private void createSymbol(String symbol) {
         MyLinkedList list = new MyLinkedList();
         listMap.put(symbol, list);
-        for(int i = 0;i < 60*48; i++)
-            list.storeLastMinute(new Candlestick());
     }
 
     @Override
-    public Double getAverage(Period period, String symbol) {
+    public Double getAverage(Period period, String symbol) throws NotEnoughDataException {
         MyLinkedList list = listMap.get(symbol);
         Candlestick candle = list.getAverageCandlestick(period.getAmount(), period.getInterval());
         Double[] data = new Double[]{ candle.getOpen(), candle.getClose(),
@@ -54,14 +58,16 @@ public class SMARuleMemoryService implements RuleMemoryService {
                 list[i] = new LinkedList<>();
             }
         }
-        private Candlestick getAverageCandlestick(int amount, Interval interval) {
+        private Candlestick getAverageCandlestick(int amount, Interval interval) throws NotEnoughDataException {
+            LinkedList<Candlestick> l = list[interval.ordinal()];
+            if(l.size() < amount)
+                throw new NotEnoughDataException();
             ListIterator<Candlestick> iterator
-                    = list[interval.ordinal()].listIterator();
+                    = l.listIterator();
             List<Candlestick>  candles = new ArrayList<>();
             for(int ind = 0; ind < amount; ind++){
                 candles.add(iterator.next());
             }
-            System.out.println(amount + " " + interval + " " + candles);
             return getAverageCandlestickOfList(candles);
         }
         private void storeLastMinute(Candlestick candle) {
@@ -71,14 +77,22 @@ public class SMARuleMemoryService implements RuleMemoryService {
                 storeLastHour();
         }
         private void storeLastHour(){
-            Candlestick hourAverage = getAverageCandlestick(60,Interval.M);
-            list[1].addFirst(hourAverage);
-            if (list[1].size() % 24 == 0)
-                storeLastDay();
+            try {
+                Candlestick hourAverage = getAverageCandlestick(60, Interval.M);
+                list[1].addFirst(hourAverage);
+                if (list[1].size() % 24 == 0)
+                    storeLastDay();
+            } catch (NotEnoughDataException e){
+                //doesn't happen because the size is already checked.
+            }
         }
         private void storeLastDay(){
-            Candlestick dayAverage = getAverageCandlestick(24,Interval.H);
-            list[2].addFirst(dayAverage);
+            try {
+                Candlestick dayAverage = getAverageCandlestick(24, Interval.H);
+                list[2].addFirst(dayAverage);
+            } catch (NotEnoughDataException e) {
+                //doesn't happen because the size is already checked.
+            }
         }
         private Candlestick getAverageCandlestickOfList(List<Candlestick> candles) {
             double[] data = new double[4];

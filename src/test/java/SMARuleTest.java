@@ -2,6 +2,7 @@ import auxiliary.RuleAux;
 import module.Candlestick;
 import org.junit.Assert;
 import org.junit.Test;
+import rule.NotEnoughDataException;
 import rule.Rule;
 import rule.RuleMemoryService;
 
@@ -47,7 +48,7 @@ public class SMARuleTest {
         Assert.assertTrue(rules.containsAll(other));
     }
     @Test
-    public void addDataToRuleMemory_checkSMARuleSatisfy_mustBeTrue(){
+    public void addDataToRuleMemory_checkSMARuleSatisfy_mustBeTrue() throws NotEnoughDataException {
         Rule rule = Rule.Factory.create("SMA 2 M OPEN > 1 M CLOSE");
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
@@ -58,7 +59,7 @@ public class SMARuleTest {
     }
 
     @Test
-    public void addDataToRuleMemory_checkSMARuleSatisfy_museBeFalse(){
+    public void addDataToRuleMemory_checkSMARuleSatisfy_museBeFalse() throws NotEnoughDataException {
         Rule rule = Rule.Factory.create("SMA 1 M OPEN < 2 M CLOSE");
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
@@ -68,7 +69,7 @@ public class SMARuleTest {
         Assert.assertFalse(rule.satisfy("test"));
     }
     @Test
-    public void addMultiSymbolDataToRuleMemory_checkSMARuleSatisfy_mustBeFalse(){
+    public void addMultiSymbolDataToRuleMemory_checkSMARuleSatisfy_mustBeFalse() throws NotEnoughDataException {
         Rule rule = Rule.Factory.create("SMA 1 M OPEN < 2 M CLOSE");
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
@@ -80,7 +81,7 @@ public class SMARuleTest {
     }
 
     @Test
-    public void addSeveralDataToRuleMemory_checkVariousSMARTRuleSatisfy(){
+    public void addSeveralDataToRuleMemory_checkVariousSMARTRuleSatisfy() throws NotEnoughDataException {
         List<Candlestick> candles = new ArrayList<>();
         for (int i = 0; i < 60*46; i++){
             candles.add(new Candlestick(10.0,1.0,10.0,0.0,0L,0L,"test"));

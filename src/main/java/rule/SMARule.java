@@ -28,9 +28,7 @@ public class SMARule implements Rule {
     }
 
     @Override
-    public boolean satisfy(String symbol) {
-        System.out.println("in satisfy of rule:" + toString());
-        System.out.println(memory.getAverage(period[0],symbol)+ " " + memory.getAverage(period[1],symbol));
+    public boolean satisfy(String symbol) throws NotEnoughDataException {
         return memory.getAverage(period[0],symbol) < memory.getAverage(period[1],symbol);
     }
 

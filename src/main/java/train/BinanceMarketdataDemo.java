@@ -8,12 +8,25 @@ import com.binance.api.client.domain.market.*;
 import com.binance.api.client.exception.BinanceApiException;
 import com.google.common.math.Quantiles;
 import config.Configuration;
+import data.BinanceDataCollector;
+import data.DataCollector;
+import data.Sender;
+import data.SymbolNotFoundException;
+import kafka.Producer;
 
 import java.util.List;
+import java.util.logging.Logger;
+
+import static config.Configuration.BROKER_ADDRESS;
 
 public class BinanceMarketdataDemo {
-    public static <BookTicker> void main(String[] args) throws Exception {
+    Logger logger = Logger.getLogger(BinanceDataCollector.class.getName());
+
+    private final static String APIS_FILE_ADDRESS = "src/main/resources/binance/symbols.smbl";
+    public static void main(String[] args) throws Exception, SymbolNotFoundException {
         Configuration.setSystemProxy();
+        System.out.println(APIS_FILE_ADDRESS);
+        final Producer producer = new Producer(BROKER_ADDRESS);
         //JavaAPI.testURL("https://www.binance.com/en");
         BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
         BinanceApiRestClient client = factory.newRestClient();
@@ -30,6 +43,9 @@ public class BinanceMarketdataDemo {
 
           System.out.println(candlestickList.get(candlestickList.size()-2));
 
+        DataCollector dataCollector = BinanceDataCollector.getDataCollector();
+        System.out.println(dataCollector.getLastCandlestick("USDTBIDR"));
+        producer.send("test",new module.Candlestick());
             //System.out.println(tickerStatistics);
         //}
         // Getting all latest prices

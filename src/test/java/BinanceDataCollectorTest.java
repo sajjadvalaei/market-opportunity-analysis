@@ -1,10 +1,14 @@
 import com.binance.api.client.exception.BinanceApiException;
 import data.DataCollector;
+import data.SymbolNotFoundException;
 import module.Candlestick;
 import auxiliary.BinanceDataCollectorAux;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import scala.Symbol;
+
+import java.net.ConnectException;
 
 public class BinanceDataCollectorTest {
     private final static double ACCEPTABLE_ERROR = 1.0;
@@ -17,26 +21,21 @@ public class BinanceDataCollectorTest {
     }
 
     @Test
-    public void checkRequestWithApiDifference_shouldBeEqual() {
+    public void checkRequestWithApiDifference_shouldBeEqual() throws SymbolNotFoundException, ConnectException {
         Candlestick checkCandle = BinanceDataCollectorAux.getLastCandlestick(BINANCE_KEY);
         Candlestick candle = dataCollector.getLastCandlestick(BINANCE_KEY);
-        checkTwoNearCandleDifference_ShouldBeSmall(candle,checkCandle,0.0001);
+        checkTwoNearCandleDifference_ShouldBeSmall(candle,checkCandle,0.01);
     }
-
-    @Test (expected = BinanceApiException.class)
-    public void wrongKeyException() {
-        dataCollector.getLastCandlestick("wrong");
-    }
-    @Test (expected = BinanceApiException.class)
-    public void nullKeyException() {
+    @Test (expected = SymbolNotFoundException.class)
+    public void nullKeyException() throws SymbolNotFoundException, ConnectException {
         dataCollector.getLastCandlestick(null);
     }
-    @Test (expected = BinanceApiException.class)
-    public void uppercaseWrongKeyException() {
+    @Test (expected = SymbolNotFoundException.class)
+    public void uppercaseWrongKeyException() throws SymbolNotFoundException, ConnectException {
         dataCollector.getLastCandlestick("WRONG");
     }
     @Test // take 1 minute to execute
-    public void checkTwoNearRequestDifference_shouldBeSmallMustNotBeEqual() throws InterruptedException {
+    public void checkTwoNearRequestDifference_shouldBeSmallMustNotBeEqual() throws InterruptedException, ConnectException, SymbolNotFoundException {
         Candlestick oldCandle = dataCollector.getLastCandlestick(BINANCE_KEY);
         Thread.sleep(DATA_UPDATE_INTERVAL+1000);
         Candlestick candle = dataCollector.getLastCandlestick(BINANCE_KEY);

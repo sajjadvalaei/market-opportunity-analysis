@@ -8,7 +8,7 @@ public interface RuleMemoryService {
     void append(Candlestick candle);
 
 
-    Double getAverage(Period period, String symbol);
+    Double getAverage(Period period, String symbol) throws NotEnoughDataException;
 
     Candlestick getLast(String symbol);
 }

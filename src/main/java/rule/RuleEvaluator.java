@@ -5,23 +5,28 @@ import database.MySQLDatabase;
 import kafka.Consumer;
 import module.Candlestick;
 import module.Notification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.ErrorManager;
+
+import static config.Configuration.*;
 
 public class RuleEvaluator {
     private static final int MINIMUM_NUM_RECORD = 1;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RuleEvaluator.class);
     private final List<Rule> ruleList;
     private final Set<RuleMemoryService> ruleMemories = new HashSet<>();
     private final MySQLDatabase mySQLDatabase;
     private final Consumer consumer;
     public RuleEvaluator(String ruleFileAddress, Consumer consumer, String databaseName) throws FileNotFoundException {
-        MySQLDatabase.start(databaseName);
-        mySQLDatabase = MySQLDatabase.getDatabase(); 
+        this.mySQLDatabase = new MySQLDatabase(DATABASE_URL, USER, PASSWORD, databaseName);
         this.ruleList = Rule.Factory.load(ruleFileAddress);
-        ruleList.forEach(rule-> ruleMemories.add(rule.getMemory()));
+        this.ruleList.forEach(rule-> ruleMemories.add(rule.getMemory()));
         this.consumer = consumer;
     }
     void run(){
@@ -39,8 +44,12 @@ public class RuleEvaluator {
 
     private void storeSatisfiedRulesInDatabase(Candlestick candlestick) {
         ruleList.forEach(rule->{
-            if( rule.satisfy(candlestick.getSymbol()) )
-                storeToDatabase(rule, candlestick);
+            try {
+                if( rule.satisfy(candlestick.getSymbol()) )
+                    storeToDatabase(rule, candlestick);
+            } catch (NotEnoughDataException e) {
+                LOGGER.error("Data is not sufficient for evaluating this rule: " + rule +" with this candle: " + candlestick);
+            }
         });
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public interface Rule {
-    public boolean satisfy(String key);
+    public boolean satisfy(String key) throws NotEnoughDataException;
 
     RuleMemoryService getMemory();
 
