@@ -1,14 +1,12 @@
 package api;
 
-import api.StandardResponse;
-import api.StatusResponse;
 import com.google.gson.Gson;
-import database.MySQLDatabase;
-import module.Notification;
+import common.database.MySQLDatabase;
+import common.notification.Notification;
 
 import java.util.List;
 
-import static config.Configuration.*;
+import static common.config.Configuration.*;
 import static spark.Spark.get;
 
 public class APIHandler {

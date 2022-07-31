@@ -1,0 +1,416 @@
+[2022-07-31 06:22:34,399] INFO ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-producer_unique_transactional_id
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = producer_unique_transactional_id
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 06:22:34,568] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:22:34,575] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:22:34,663] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:22:34,663] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:22:34,663] INFO Kafka startTimeMs: 1659232354659 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:22:34,692] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:34,693] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:34,705] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 06:22:34,942] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:34,942] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,043] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,043] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,246] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,247] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,653] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:35,654] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:36,567] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:36,568] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:37,581] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:37,581] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:38,443] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:38,443] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:39,305] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:22:39,305] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,264] INFO ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-producer_unique_transactional_id
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = producer_unique_transactional_id
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 06:23:03,439] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:23:03,446] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:23:03,514] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:03,514] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:03,515] INFO Kafka startTimeMs: 1659232383510 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:03,529] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 06:23:03,543] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,544] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,755] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,756] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,908] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:03,908] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:04,161] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:04,162] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:04,617] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:04,618] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:05,477] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:05,478] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:06,388] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:06,388] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:07,350] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:07,351] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:08,364] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:08,364] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,552] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,654] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,655] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,757] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,757] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,960] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:13,961] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:14,316] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:14,317] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:15,280] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:15,281] WARN [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected (org.apache.kafka.clients.NetworkClient)
+[2022-07-31 06:23:47,189] INFO ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-producer_unique_transactional_id
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = producer_unique_transactional_id
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 06:23:47,350] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:23:47,359] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 06:23:47,444] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:47,446] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:47,449] INFO Kafka startTimeMs: 1659232427440 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:23:47,464] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 06:23:47,858] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 06:23:47,865] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Discovered transaction coordinator sajjad-Lenovo:9092 (id: 0 rack: null) (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 06:23:48,049] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] ProducerId set to 0 with epoch 16 (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 06:23:52,954] INFO candlestick: WBTCETH 1659232320000 13.97 13.97 13.97 13.97 Added. (fetcher.Sender)
+[2022-07-31 06:23:52,955] INFO candlestick: NEOETH 1659232320000 0.00672 0.00672 0.00672 0.00672 Added. (fetcher.Sender)
+[2022-07-31 06:23:52,956] INFO candlestick: USDTBIDR 1659232320000 14898.0 14898.0 14898.0 14897.0 Added. (fetcher.Sender)
+[2022-07-31 06:24:55,697] INFO candlestick: WBTCETH 1659232380000 13.97 13.97 13.97 13.97 Added. (fetcher.Sender)
+[2022-07-31 06:24:55,698] INFO candlestick: NEOETH 1659232380000 0.00672 0.00672 0.00672 0.00672 Added. (fetcher.Sender)
+[2022-07-31 06:24:55,698] INFO candlestick: USDTBIDR 1659232380000 14897.0 14898.0 14898.0 14897.0 Added. (fetcher.Sender)
+[2022-07-31 06:25:58,438] INFO candlestick: WBTCETH 1659232440000 13.97 13.97 13.97 13.97 Added. (fetcher.Sender)
+[2022-07-31 06:25:58,439] INFO candlestick: NEOETH 1659232440000 0.00672 0.00672 0.00672 0.00672 Added. (fetcher.Sender)
+[2022-07-31 06:25:58,439] INFO candlestick: USDTBIDR 1659232440000 14898.0 14898.0 14898.0 14897.0 Added. (fetcher.Sender)
+[2022-07-31 06:26:17,279] INFO ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-consumer-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = consumer
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class common.candlestick.CandlestickDeserializer
+ (org.apache.kafka.clients.consumer.ConsumerConfig)
+[2022-07-31 06:26:17,768] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:26:17,769] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:26:17,769] INFO Kafka startTimeMs: 1659232577764 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 06:26:17,772] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Subscribed to topic(s): candlestick (org.apache.kafka.clients.consumer.KafkaConsumer)
+[2022-07-31 06:26:18,806] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 06:26:18,808] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Discovered group coordinator sajjad-Lenovo:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 06:26:18,811] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 06:26:18,833] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 06:26:18,845] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully joined group with generation Generation{generationId=38, memberId='consumer-consumer-1-41572c1d-add3-478c-a54f-64e6592a5381', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 06:26:18,847] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Finished assignment for group at generation 38: {consumer-consumer-1-41572c1d-add3-478c-a54f-64e6592a5381=Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9])} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,866] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully synced group in generation Generation{generationId=38, memberId='consumer-consumer-1-41572c1d-add3-478c-a54f-64e6592a5381', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 06:26:18,866] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Notifying assignor about the new Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9]) (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,868] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Adding newly assigned partitions: candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9 (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,886] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,887] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-1 to the committed offset FetchPosition{offset=130, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,887] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,887] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-3 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,887] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-7 to the committed offset FetchPosition{offset=71, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-8 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:18,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-9 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 06:26:20,048] INFO Proccessing on candlestick WBTCETH 1659232320000 13.97 13.97 13.97 13.97 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,050] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: WBTCETH 1659232320000 13.97 13.97 13.97 13.97 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,051] INFO Proccessing on candlestick NEOETH 1659232320000 0.00672 0.00672 0.00672 0.00672 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,051] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: NEOETH 1659232320000 0.00672 0.00672 0.00672 0.00672 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,051] INFO Proccessing on candlestick WBTCETH 1659232380000 13.97 13.97 13.97 13.97 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,052] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: WBTCETH 1659232380000 13.97 13.97 13.97 13.97 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,052] INFO Proccessing on candlestick NEOETH 1659232380000 0.00672 0.00672 0.00672 0.00672 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,052] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: NEOETH 1659232380000 0.00672 0.00672 0.00672 0.00672 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,052] INFO Proccessing on candlestick WBTCETH 1659232440000 13.97 13.97 13.97 13.97 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,052] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: WBTCETH 1659232440000 13.97 13.97 13.97 13.97 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,053] INFO Proccessing on candlestick NEOETH 1659232440000 0.00672 0.00672 0.00672 0.00672 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,053] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: NEOETH 1659232440000 0.00672 0.00672 0.00672 0.00672 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,053] INFO Proccessing on candlestick USDTBIDR 1659232320000 14898.0 14898.0 14898.0 14897.0 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,053] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: USDTBIDR 1659232320000 14898.0 14898.0 14898.0 14897.0 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,191] INFO Proccessing on candlestick USDTBIDR 1659232380000 14897.0 14898.0 14898.0 14897.0 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,192] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: USDTBIDR 1659232380000 14897.0 14898.0 14898.0 14897.0 (notifier.rule.RuleGroupService)
+[2022-07-31 06:26:20,363] INFO Proccessing on candlestick USDTBIDR 1659232440000 14898.0 14898.0 14898.0 14897.0 (notifier.RuleEvaluator)
+[2022-07-31 06:26:20,363] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: USDTBIDR 1659232440000 14898.0 14898.0 14898.0 14897.0 (notifier.rule.RuleGroupService)

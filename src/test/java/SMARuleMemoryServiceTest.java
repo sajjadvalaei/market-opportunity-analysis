@@ -1,20 +1,21 @@
 import auxiliary.CandlestickAux;
-import module.Candlestick;
-import module.Interval;
-import module.OHLC;
-import module.Period;
+import common.candlestick.Candlestick;
+import common.period.Interval;
+import common.period.OHLC;
+import common.period.Period;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import rule.*;
+import notifier.exception.NotEnoughDataException;
+import notifier.rule.Rule;
+import notifier.rule.SMARule;
+import notifier.rule.SMARuleMemoryService;
 
 public class SMARuleMemoryServiceTest {
-    public RuleMemoryService memory;
+    public SMARuleMemoryService memory;
     @Before
     public void setup(){
-        Rule rule = Rule.Factory.create("SMA 10 D OPEN > 11 D CLOSE");
-        memory = rule.getMemory();
+        memory = new SMARuleMemoryService();
     }
     @Test
     public void getLastTest_addOneCandlestick_mustReturnThat(){

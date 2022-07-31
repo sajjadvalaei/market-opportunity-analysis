@@ -1,7 +1,7 @@
 package auxiliary;
 
-import kafka.CandlestickDeserializer;
-import module.Candlestick;
+import common.candlestick.CandlestickDeserializer;
+import common.candlestick.Candlestick;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;

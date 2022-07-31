@@ -1,5 +1,8 @@
 package auxiliary;
 
+import common.notification.Notification;
+import common.notification.NotificationSQLService;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,9 +11,9 @@ import java.util.Objects;
 import java.util.Random;
 
 public class NotificationAux {
-    public static module.Notification createRandomNotification() {
+    public static Notification createRandomNotification() {
         Random random = new Random();
-        return new module.Notification(randomRuleNameGenerator(),
+        return new Notification(randomRuleNameGenerator(),
                 CandlestickAux.randomSymbolGenerator(),
                 random.nextDouble(), random.nextLong());
     }
@@ -22,22 +25,22 @@ public class NotificationAux {
     }
 
     public static String selectAllQueryStringStatement() {
-        return module.Notification.getSelectAllQueryStringStatement();
+        return NotificationSQLService.getSelectAllQueryStringStatement();
     }
 
-    public static boolean resultSetContains(ResultSet resultSet, module.Notification notification) throws SQLException {
+    public static boolean resultSetContains(ResultSet resultSet, Notification notification) throws SQLException {
         while (resultSet.next()){
-            module.Notification other = new module.Notification(resultSet);
+            Notification other = NotificationSQLService.extractNotification(resultSet);
             if (Objects.equals(notification, other))
                 return true;
         }
         return false;
     }
 
-    public static List<module.Notification> createRandomNotificationList(int num) {
-        List<module.Notification> notifications = new ArrayList<>();
+    public static List<Notification> createRandomNotificationList(int num) {
+        List<Notification> notifications = new ArrayList<>();
         for(int index = 0; index < num; index++) {
-            module.Notification notif = createRandomNotification();
+            Notification notif = createRandomNotification();
             notifications.add(notif);
         }
         return notifications;

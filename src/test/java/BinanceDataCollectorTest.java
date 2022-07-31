@@ -1,12 +1,11 @@
-import com.binance.api.client.exception.BinanceApiException;
-import data.DataCollector;
-import data.SymbolNotFoundException;
-import module.Candlestick;
+import fetcher.collector.BinanceDataCollector;
+import fetcher.collector.DataCollector;
+import fetcher.exception.SymbolNotFoundException;
+import common.candlestick.Candlestick;
 import auxiliary.BinanceDataCollectorAux;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import scala.Symbol;
 
 import java.net.ConnectException;
 
@@ -17,7 +16,7 @@ public class BinanceDataCollectorTest {
     private static DataCollector dataCollector;
     @Before
     public void setDataCollector(){
-        dataCollector = data.BinanceDataCollector.getDataCollector();
+        dataCollector = BinanceDataCollector.getDataCollector();
     }
 
     @Test
@@ -26,7 +25,7 @@ public class BinanceDataCollectorTest {
         Candlestick candle = dataCollector.getLastCandlestick(BINANCE_KEY);
         checkTwoNearCandleDifference_ShouldBeSmall(candle,checkCandle,0.01);
     }
-    @Test (expected = SymbolNotFoundException.class)
+    @Test (expected = Exception.class)
     public void nullKeyException() throws SymbolNotFoundException, ConnectException {
         dataCollector.getLastCandlestick(null);
     }

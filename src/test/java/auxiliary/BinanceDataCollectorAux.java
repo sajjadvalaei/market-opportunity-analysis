@@ -3,8 +3,8 @@ package auxiliary;
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.domain.market.CandlestickInterval;
-import config.Configuration;
-import module.Candlestick;
+import common.config.Configuration;
+import common.candlestick.Candlestick;
 
 import java.util.List;
 

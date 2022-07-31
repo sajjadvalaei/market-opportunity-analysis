@@ -1,0 +1,333 @@
+[2022-07-31 00:52:50,657] INFO ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 00:52:50,953] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:52:50,953] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:52:50,953] INFO Kafka startTimeMs: 1659212570942 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:52:51,383] INFO [Producer clientId=producer-1] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 00:57:32,125] INFO ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 00:57:32,461] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:32,462] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:32,462] INFO Kafka startTimeMs: 1659212852456 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:32,907] INFO [Producer clientId=producer-1] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 00:57:51,024] INFO ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	internal.auto.downgrade.txn.commit = false
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class common.candlestick.CandlestickSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-07-31 00:57:51,325] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:51,326] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:51,326] INFO Kafka startTimeMs: 1659212871319 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:57:51,764] INFO [Producer clientId=producer-1] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 00:58:14,987] INFO ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-consumer-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = consumer
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	socket.connection.setup.timeout.max.ms = 127000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class common.candlestick.CandlestickDeserializer
+ (org.apache.kafka.clients.consumer.ConsumerConfig)
+[2022-07-31 00:58:15,510] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:58:15,510] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:58:15,510] INFO Kafka startTimeMs: 1659212895504 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 00:58:15,514] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Subscribed to topic(s): candlestick (org.apache.kafka.clients.consumer.KafkaConsumer)
+[2022-07-31 00:58:16,841] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 00:58:16,843] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Discovered group coordinator sajjad-Lenovo:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 00:58:16,847] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 00:58:16,861] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 00:58:16,864] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully joined group with generation Generation{generationId=9, memberId='consumer-consumer-1-9f387410-1a97-48a4-a09d-fa6262d3c4f5', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 00:58:16,866] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Finished assignment for group at generation 9: {consumer-consumer-1-9f387410-1a97-48a4-a09d-fa6262d3c4f5=Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9])} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,872] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully synced group in generation Generation{generationId=9, memberId='consumer-consumer-1-9f387410-1a97-48a4-a09d-fa6262d3c4f5', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 00:58:16,873] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Notifying assignor about the new Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9]) (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,875] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Adding newly assigned partitions: candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9 (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,888] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,889] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-1 to the committed offset FetchPosition{offset=46, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,889] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-3 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-7 to the committed offset FetchPosition{offset=23, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,890] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-8 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 00:58:16,891] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-9 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)

@@ -1,5 +1,7 @@
 package auxiliary;
 
+import common.candlestick.Candlestick;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,14 +9,14 @@ import java.util.Random;
 public class CandlestickAux {
 
     private static final Random random = new Random();
-    public static module.Candlestick createRandomCandlestick() {
-        return new module.Candlestick(random.nextDouble(), random.nextDouble(),
+    public static Candlestick createRandomCandlestick() {
+        return new Candlestick(random.nextDouble(), random.nextDouble(),
                 random.nextDouble(), random.nextDouble(),
                 random.nextLong(), random.nextLong(), randomSymbolGenerator());
     }
 
-    public static List<module.Candlestick> randomCandlestickList(int num) {
-        ArrayList<module.Candlestick> list = new ArrayList<>();
+    public static List<Candlestick> randomCandlestickList(int num) {
+        ArrayList<Candlestick> list = new ArrayList<>();
         while(num > 0 ) {
             list.add(createRandomCandlestick());
             num--;

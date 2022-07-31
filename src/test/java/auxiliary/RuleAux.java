@@ -1,10 +1,10 @@
 package auxiliary;
 
-import module.Interval;
-import module.OHLC;
-import module.Period;
-import rule.Rule;
-import rule.SMARule;
+import common.period.Interval;
+import common.period.OHLC;
+import common.period.Period;
+import notifier.rule.Rule;
+import notifier.rule.SMARule;
 
 import java.io.File;
 import java.io.FileNotFoundException;

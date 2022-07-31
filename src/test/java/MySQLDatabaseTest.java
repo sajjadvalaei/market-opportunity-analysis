@@ -1,13 +1,11 @@
 
 import auxiliary.AbstractContainerDatabaseTest;
-import auxiliary.MySQLDatabaseAux;
 import auxiliary.NotificationAux;
-import data.Sender;
-import database.MySQLDatabase;
-import module.Notification;
+import fetcher.Sender;
+import common.database.MySQLDatabase;
+import common.notification.Notification;
 import org.junit.*;
 import org.testcontainers.containers.MySQLContainer;
-import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.utility.DockerImageName;
 
 import java.sql.ResultSet;
