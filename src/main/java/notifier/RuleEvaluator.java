@@ -18,6 +18,11 @@ import java.util.List;
 /***
  *  receive candlesticks and creates notifications and store them to database.
  *  TODO: handle bunch of consumer exceptions.
+ *  @DesignNote: This class is designed to have just one group of rules( need one memory type. For example, SMARules).
+ *  This constraint is to keep the design simple stupid enough.
+ *  In addition, for adding another group of rules, we can just start another thread of RuleEvaluator
+ *  with another RuleGroupService and another consumer( with different groupId). However, in case of inefficiency,
+ *  we can simply add a list of RuleGroupServices instead of one.
  */
 public class RuleEvaluator extends Thread{
     private static final Logger LOGGER = LoggerFactory.getLogger(RuleEvaluator.class);
