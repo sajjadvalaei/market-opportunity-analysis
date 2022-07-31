@@ -15,8 +15,11 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.List;
 
+/***
+ *  receive candlesticks and creates notifications and store them to database.
+ *  TODO: handle bunch of consumer exceptions.
+ */
 public class RuleEvaluator extends Thread{
-    private static final int MINIMUM_NUM_RECORD = 1;
     private static final Logger LOGGER = LoggerFactory.getLogger(RuleEvaluator.class);
     private final RuleGroupService ruleGroupService;
     private final Database database;

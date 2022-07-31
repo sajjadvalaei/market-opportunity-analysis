@@ -14,6 +14,11 @@ import java.util.List;
 
 import static common.config.Configuration.PROPS;
 
+/***
+ *  This singleton class just has a considerable method from its interface.
+ *  Other methods are just trying to connect in the case of exceptions.
+ *  TODO: cache candlesticks.
+ */
 public class BinanceDataCollector  implements  DataCollector {
     private static final int TRY_NUM = Integer.parseInt(PROPS.getProperty("api.maximumTryNumber"));
     static DataCollector dataCollector;

@@ -7,15 +7,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import notifier.exception.NotEnoughDataException;
-import notifier.rule.Rule;
-import notifier.rule.SMARule;
-import notifier.rule.SMARuleMemoryService;
+import notifier.rule.SMARuleMemory;
 
 public class SMARuleMemoryServiceTest {
-    public SMARuleMemoryService memory;
+    public SMARuleMemory memory;
     @Before
     public void setup(){
-        memory = new SMARuleMemoryService();
+        memory = new SMARuleMemory();
     }
     @Test
     public void getLastTest_addOneCandlestick_mustReturnThat(){

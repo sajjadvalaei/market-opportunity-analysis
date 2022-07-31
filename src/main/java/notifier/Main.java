@@ -7,7 +7,7 @@ import common.candlestick.Candlestick;
 import notifier.exception.MemoryNotAcceptableException;
 import notifier.rule.Rule;
 import notifier.rule.RuleGroupService;
-import notifier.rule.SMARuleMemoryService;
+import notifier.rule.SMARuleMemory;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -31,7 +31,7 @@ public class Main {
             final KafkaConsumer<String, Candlestick> consumer = createConsumer(BROKER_ADDRESS, TOPIC_NAME, CONSUMER_GROUP_ID);
             final Database database = new MySQLDatabase(DATABASE_URL, USER, PASSWORD, DATABASE_NAME);
             final List<Rule> smaRules = Rule.Factory.load(RULE_FILE_ADDRESS);
-            final RuleGroupService ruleGroupService = new RuleGroupService(smaRules, new SMARuleMemoryService());
+            final RuleGroupService ruleGroupService = new RuleGroupService(smaRules, new SMARuleMemory());
             RuleEvaluator ruleEvaluator
                     = new RuleEvaluator(ruleGroupService, consumer, database);
             ruleEvaluator.start();

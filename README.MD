@@ -25,8 +25,9 @@ With this command:$ bin/kafka-console-consumer.sh --topic candlestick --from-beg
 You can see consumed data in System.out.
 And also in you can check mysql database.
 
-8. **run api.APIHandler**:
-You can see the data with link http://localhost:4567/notifications.
+8. **run api.APIHandler**: You can see the data with link http://localhost:4567/notifications.
+
+9. java/kafka directory is not needed anymore. Just a few tests are depending on it.
 
 Hope you enjoy that. 
 

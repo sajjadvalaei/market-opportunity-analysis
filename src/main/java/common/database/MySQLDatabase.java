@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/***
+ * simple mysql database just has two method 1.insert notification instance 2.select all notifications as a list.
+ * TODO: I should handle probable exceptions especially in connecting to database.
+ */
 public class MySQLDatabase implements Database {
     private final static Logger LOGGER = LoggerFactory.getLogger(MySQLDatabase.class.getName());
     private final String databaseURL;

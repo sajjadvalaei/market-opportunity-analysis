@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/***
+ * Auxiliary class to help mysql database query notifications.
+ */
 public class NotificationSQLService {
     private final static String TABLE_NAME = "Notification";
     private final static String RULE_NAME_KEY = "rule_name";

@@ -1,12 +1,12 @@
 import auxiliary.RuleAux;
 import common.candlestick.Candlestick;
 import notifier.exception.MemoryNotAcceptableException;
-import notifier.rule.SMARuleMemoryService;
+import notifier.rule.SMARuleMemory;
 import org.junit.Assert;
 import org.junit.Test;
 import notifier.exception.NotEnoughDataException;
 import notifier.rule.Rule;
-import notifier.rule.RuleMemoryService;
+import notifier.rule.RuleMemory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,11 +52,11 @@ public class SMARuleTest {
     @Test
     public void addDataToRuleMemory_checkSMARuleSatisfy_mustBeTrue() throws NotEnoughDataException, MemoryNotAcceptableException {
         Rule rule = Rule.Factory.create("SMA 2 M OPEN > 1 M CLOSE");
-        rule.setMemory( new SMARuleMemoryService());
+        rule.setMemory( new SMARuleMemory());
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,60L,60L,"test"));
-        RuleMemoryService memory = rule.getMemory();
+        RuleMemory memory = rule.getMemory();
         candles.forEach(memory::append);
         Assert.assertTrue(rule.satisfy("test"));
     }
@@ -64,23 +64,23 @@ public class SMARuleTest {
     @Test
     public void addDataToRuleMemory_checkSMARuleSatisfy_museBeFalse() throws NotEnoughDataException, MemoryNotAcceptableException {
         Rule rule = Rule.Factory.create("SMA 1 M OPEN < 2 M CLOSE");
-        rule.setMemory(new SMARuleMemoryService());
+        rule.setMemory(new SMARuleMemory());
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,60L,60L,"test"));
-        RuleMemoryService memory = rule.getMemory();
+        RuleMemory memory = rule.getMemory();
         candles.forEach(memory::append);
         Assert.assertFalse(rule.satisfy("test"));
     }
     @Test
     public void addMultiSymbolDataToRuleMemory_checkSMARuleSatisfy_mustBeFalse() throws NotEnoughDataException, MemoryNotAcceptableException {
         Rule rule = Rule.Factory.create("SMA 1 M OPEN < 2 M CLOSE");
-        rule.setMemory(new SMARuleMemoryService());
+        rule.setMemory(new SMARuleMemory());
         List<Candlestick> candles = new ArrayList<>();
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,0L,0L,"test"));
         candles.add(new Candlestick(10.0,1000.0,0.0,0.0,60L,60L,"wrong"));
         candles.add(new Candlestick(10.0,1.0,0.0,0.0,60L,60L,"test"));
-        RuleMemoryService memory = rule.getMemory();
+        RuleMemory memory = rule.getMemory();
         candles.forEach(memory::append);
         Assert.assertFalse(rule.satisfy("test"));
     }
@@ -88,7 +88,7 @@ public class SMARuleTest {
     @Test
     public void addSeveralDataToRuleMemory_checkVariousSMARTRuleSatisfy() throws NotEnoughDataException, MemoryNotAcceptableException {
         List<Candlestick> candles = new ArrayList<>();
-        SMARuleMemoryService memory = new SMARuleMemoryService();
+        SMARuleMemory memory = new SMARuleMemory();
         for (int i = 0; i < 60*46; i++){
             candles.add(new Candlestick(10.0,1.0,10.0,0.0,0L,0L,"test"));
         }

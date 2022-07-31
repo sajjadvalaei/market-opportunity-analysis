@@ -28,8 +28,13 @@ import java.util.Scanner;
 
 import static common.config.Configuration.*;
 
+/***
+ * This thread fetches data from api every 60 seconds and sends it by kafka producer as soon as it could.
+ * in case of failure, it tries again to send data to brokers.
+ */
 public class Sender extends  Thread{
 
+    //Warning: don't remove this.
     static{
         Configuration.setSystemProxy();
         System.out.println("Proxy set.");
@@ -38,6 +43,7 @@ public class Sender extends  Thread{
     private final static String APIS_FILE_ADDRESS = PROPS.getProperty("api.fileAddress");
     private final static Logger LOGGER = LoggerFactory.getLogger(Sender.class);
     private static final String TRANSACTIONAL_ID = "producer_unique_transactional_id";
+
     private final DataCollector dataCollector = BinanceDataCollector.getDataCollector();
     private final KafkaProducer<String,Candlestick> producer = createProducer(BROKER_ADDRESS, TRANSACTIONAL_ID);
 
@@ -65,6 +71,7 @@ public class Sender extends  Thread{
         } catch (ProducerShotDownException e) {
             LOGGER.error(e.toString());
         } catch (FileNotFoundException e) {
+            //your file path is wrong.
             throw new RuntimeException(e);
         }
         producer.close();

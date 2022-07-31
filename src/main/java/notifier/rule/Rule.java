@@ -9,13 +9,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/***
+ * Definition is related to indicators in markets, and it tries to find them.
+ * Each rule can be satisfied or not. Each rule has a memory.
+ * TODO: Make @satisfy parameter Chandlestick to make sense more.
+ */
 public interface Rule {
-    public boolean satisfy(String key) throws NotEnoughDataException;
+    /***
+     * maybe here is the most confusing part of my code, and it should be fixed.
+     *  @Satisfy(symbol) is checking whether the last candlestick from the symbol market
+     *  added to the memory satisfies the rule or not.
+      */
+    public boolean satisfy(String symbol) throws NotEnoughDataException;
 
-    RuleMemoryService getMemory();
+    RuleMemory getMemory();
 
-    void setMemory(RuleMemoryService memory) throws MemoryNotAcceptableException;
+    void setMemory(RuleMemory memory) throws MemoryNotAcceptableException;
 
+    /***
+     * Factory and parse form String was necessary because I assume that the user is writing rules in the source file.
+     */
     public class Factory{
         public static Rule create(String input){
             if(input.startsWith("SMA"))

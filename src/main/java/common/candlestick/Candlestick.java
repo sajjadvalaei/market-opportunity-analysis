@@ -10,7 +10,7 @@ public class Candlestick{
 
     private String symbol;
 
-    // this constructor made for its Deserializer
+    // Warning: this constructor made for its Deserializer
     public Candlestick(){
         setAllCandlestickParameters(0.0,0.0,0.0,0.0,0L,0L,"");
     }

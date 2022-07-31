@@ -2,6 +2,10 @@ package common.notification;
 
 import java.util.Objects;
 
+/***
+ * simple dataset class for storing in the database and extracting to api.
+ * // TODO: change open time to exact date and time.
+ */
 public class Notification {
 
     private final String ruleName;

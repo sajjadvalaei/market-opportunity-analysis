@@ -13,6 +13,10 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
+/***
+ * deprecated.
+ * TODO: remove it and its tests.
+ */
 public class Producer{
     private final static Logger LOGGER = Logger.getLogger(Producer.class.getName());
     private final KafkaProducer<String, Candlestick> kafkaProducer;

@@ -4,7 +4,6 @@ import common.candlestick.Candlestick;
 import common.period.Interval;
 import common.period.Period;
 import notifier.exception.NotEnoughDataException;
-import notifier.rule.RuleMemoryService;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,9 +12,13 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
+/***
+ *  handle functions that are explained in its interface and @getAverage is what SMARule needs to verify satisfaction.
+ *  TODO: add data to memory by its time not just add to the end.
+  */
 
-public class SMARuleMemoryService implements RuleMemoryService {
-    public SMARuleMemoryService(){
+public class SMARuleMemory implements RuleMemory {
+    public SMARuleMemory(){
     }
     Map<String,MyLinkedList> listMap = new HashMap<>();
     @Override

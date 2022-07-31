@@ -14,6 +14,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
+/***
+ * deprecated.
+ * TODO: remove it and its tests.
+ */
 public class Consumer {
     private KafkaConsumer<String, Candlestick> kafkaConsumer;
     public Consumer(String address, String topicName, String groupId) {

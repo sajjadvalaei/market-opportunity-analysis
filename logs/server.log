@@ -1,4 +1,4 @@
-[2022-07-31 06:31:21,656] INFO ProducerConfig values: 
+[2022-07-31 07:34:38,329] INFO ProducerConfig values: 
 	acks = -1
 	batch.size = 16384
 	bootstrap.servers = [localhost:9092]
@@ -71,48 +71,55 @@
 	transactional.id = producer_unique_transactional_id
 	value.serializer = class common.candlestick.CandlestickSerializer
  (org.apache.kafka.clients.producer.ProducerConfig)
-[2022-07-31 06:31:21,831] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
-[2022-07-31 06:31:21,840] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
-[2022-07-31 06:31:21,930] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:21,931] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:21,931] INFO Kafka startTimeMs: 1659232881926 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:21,942] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
-[2022-07-31 06:31:22,300] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
-[2022-07-31 06:31:22,301] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Discovered transaction coordinator sajjad-Lenovo:9092 (id: 0 rack: null) (org.apache.kafka.clients.producer.internals.TransactionManager)
-[2022-07-31 06:31:22,412] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] ProducerId set to 0 with epoch 17 (org.apache.kafka.clients.producer.internals.TransactionManager)
-[2022-07-31 06:31:27,225] INFO candlestick: WBTCETH 1659232800000 14.0 14.0 14.0 14.0 Added. (fetcher.Sender)
-[2022-07-31 06:31:27,229] INFO candlestick: NEOETH 1659232800000 0.00672 0.00672 0.00672 0.00672 Added. (fetcher.Sender)
-[2022-07-31 06:31:27,230] INFO candlestick: USDTBIDR 1659232800000 14898.0 14894.0 14898.0 14893.0 Added. (fetcher.Sender)
-[2022-07-31 06:31:45,068] INFO ProducerConfig values: 
-	acks = -1
-	batch.size = 16384
+[2022-07-31 07:34:38,562] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 07:34:38,572] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-07-31 07:34:38,672] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:38,672] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:38,672] INFO Kafka startTimeMs: 1659236678668 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:38,691] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 07:34:39,071] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 07:34:39,073] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Discovered transaction coordinator sajjad-Lenovo:9092 (id: 0 rack: null) (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 07:34:39,192] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] ProducerId set to 0 with epoch 19 (org.apache.kafka.clients.producer.internals.TransactionManager)
+[2022-07-31 07:34:44,717] INFO candlestick: WBTCETH 1659236580000 14.05 14.05 14.05 14.05 Added. (fetcher.Sender)
+[2022-07-31 07:34:44,719] INFO candlestick: NEOETH 1659236580000 0.00672 0.00672 0.00672 0.00672 Added. (fetcher.Sender)
+[2022-07-31 07:34:44,721] INFO candlestick: USDTBIDR 1659236580000 14891.0 14891.0 14892.0 14891.0 Added. (fetcher.Sender)
+[2022-07-31 07:34:50,054] INFO ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
 	bootstrap.servers = [localhost:9092]
-	buffer.memory = 33554432
+	check.crcs = true
 	client.dns.lookup = use_all_dns_ips
-	client.id = producer-producer_unique_transactional_id
-	compression.type = none
+	client.id = consumer-consumer-1
+	client.rack = 
 	connections.max.idle.ms = 540000
-	delivery.timeout.ms = 120000
-	enable.idempotence = true
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = consumer
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
 	interceptor.classes = []
-	internal.auto.downgrade.txn.commit = false
-	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
-	linger.ms = 0
-	max.block.ms = 60000
-	max.in.flight.requests.per.connection = 5
-	max.request.size = 1048576
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
 	metadata.max.age.ms = 300000
-	metadata.max.idle.ms = 300000
 	metric.reporters = []
 	metrics.num.samples = 2
 	metrics.recording.level = INFO
 	metrics.sample.window.ms = 30000
-	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
-	receive.buffer.bytes = 32768
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
 	reconnect.backoff.max.ms = 1000
 	reconnect.backoff.ms = 50
 	request.timeout.ms = 30000
-	retries = 2147483647
 	retry.backoff.ms = 100
 	sasl.client.callback.handler.class = null
 	sasl.jaas.config = null
@@ -131,6 +138,7 @@
 	security.protocol = PLAINTEXT
 	security.providers = null
 	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
 	socket.connection.setup.timeout.max.ms = 127000
 	socket.connection.setup.timeout.ms = 10000
 	ssl.cipher.suites = null
@@ -152,16 +160,46 @@
 	ssl.truststore.location = null
 	ssl.truststore.password = null
 	ssl.truststore.type = JKS
-	transaction.timeout.ms = 60000
-	transactional.id = producer_unique_transactional_id
-	value.serializer = class common.candlestick.CandlestickSerializer
- (org.apache.kafka.clients.producer.ProducerConfig)
-[2022-07-31 06:31:45,265] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Overriding the default enable.idempotence to true since transactional.id is specified. (org.apache.kafka.clients.producer.KafkaProducer)
-[2022-07-31 06:31:45,281] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Instantiated a transactional producer. (org.apache.kafka.clients.producer.KafkaProducer)
-[2022-07-31 06:31:45,380] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:45,380] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:45,380] INFO Kafka startTimeMs: 1659232905376 (org.apache.kafka.common.utils.AppInfoParser)
-[2022-07-31 06:31:45,395] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Invoking InitProducerId for the first time in order to acquire a producer ID (org.apache.kafka.clients.producer.internals.TransactionManager)
-[2022-07-31 06:31:45,770] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
-[2022-07-31 06:31:45,772] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] Discovered transaction coordinator sajjad-Lenovo:9092 (id: 0 rack: null) (org.apache.kafka.clients.producer.internals.TransactionManager)
-[2022-07-31 06:31:45,881] INFO [Producer clientId=producer-producer_unique_transactional_id, transactionalId=producer_unique_transactional_id] ProducerId set to 0 with epoch 18 (org.apache.kafka.clients.producer.internals.TransactionManager)
+	value.deserializer = class common.candlestick.CandlestickDeserializer
+ (org.apache.kafka.clients.consumer.ConsumerConfig)
+[2022-07-31 07:34:50,603] INFO Kafka version: 2.7.2 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:50,603] INFO Kafka commitId: 37a1cc36bf4d76f3 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:50,603] INFO Kafka startTimeMs: 1659236690593 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-07-31 07:34:50,607] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Subscribed to topic(s): candlestick (org.apache.kafka.clients.consumer.KafkaConsumer)
+[2022-07-31 07:34:51,738] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Cluster ID: CqAZ1w31R-SPPhO1vMOdoQ (org.apache.kafka.clients.Metadata)
+[2022-07-31 07:34:51,739] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Discovered group coordinator sajjad-Lenovo:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 07:34:51,743] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 07:34:51,756] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 07:34:51,759] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully joined group with generation Generation{generationId=40, memberId='consumer-consumer-1-9ca461d1-e429-4f75-a74e-0641fa63534d', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 07:34:51,762] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Finished assignment for group at generation 40: {consumer-consumer-1-9ca461d1-e429-4f75-a74e-0641fa63534d=Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9])} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,768] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Successfully synced group in generation Generation{generationId=40, memberId='consumer-consumer-1-9ca461d1-e429-4f75-a74e-0641fa63534d', protocol='range'} (org.apache.kafka.clients.consumer.internals.AbstractCoordinator)
+[2022-07-31 07:34:51,769] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Notifying assignor about the new Assignment(partitions=[candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9]) (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,771] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Adding newly assigned partitions: candlestick-0, candlestick-1, candlestick-2, candlestick-3, candlestick-4, candlestick-5, candlestick-6, candlestick-7, candlestick-8, candlestick-9 (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,787] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,787] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-1 to the committed offset FetchPosition{offset=139, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,788] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-2 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,788] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-3 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,788] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-4 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,788] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-5 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,789] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-6 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,789] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-7 to the committed offset FetchPosition{offset=77, offsetEpoch=Optional[0], currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,789] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-8 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:51,789] INFO [Consumer clientId=consumer-consumer-1, groupId=consumer] Setting offset for partition candlestick-9 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[sajjad-Lenovo:9092 (id: 0 rack: null)], epoch=0}} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator)
+[2022-07-31 07:34:52,398] INFO Proccessing on candlestick WBTCETH 1659232800000 14.0 14.0 14.0 14.0 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,400] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: WBTCETH 1659232800000 14.0 14.0 14.0 14.0 (notifier.rule.RuleGroupService)
+[2022-07-31 07:34:52,400] INFO Proccessing on candlestick NEOETH 1659232800000 0.00672 0.00672 0.00672 0.00672 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,400] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: NEOETH 1659232800000 0.00672 0.00672 0.00672 0.00672 (notifier.rule.RuleGroupService)
+[2022-07-31 07:34:52,401] INFO Proccessing on candlestick WBTCETH 1659236580000 14.05 14.05 14.05 14.05 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,401] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: WBTCETH 1659236580000 14.05 14.05 14.05 14.05 (notifier.rule.RuleGroupService)
+[2022-07-31 07:34:52,401] INFO Proccessing on candlestick NEOETH 1659236580000 0.00672 0.00672 0.00672 0.00672 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,401] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: NEOETH 1659236580000 0.00672 0.00672 0.00672 0.00672 (notifier.rule.RuleGroupService)
+[2022-07-31 07:34:52,401] INFO Proccessing on candlestick USDTBIDR 1659232800000 14898.0 14894.0 14898.0 14893.0 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,401] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: USDTBIDR 1659232800000 14898.0 14894.0 14898.0 14893.0 (notifier.rule.RuleGroupService)
+[2022-07-31 07:34:52,565] INFO Proccessing on candlestick USDTBIDR 1659236580000 14891.0 14891.0 14892.0 14891.0 (notifier.RuleEvaluator)
+[2022-07-31 07:34:52,566] ERROR Data is not sufficient for evaluating this rule: SMA 1 D LOW < 1 D HIGH with this candle: USDTBIDR 1659236580000 14891.0 14891.0 14892.0 14891.0 (notifier.rule.RuleGroupService)
+[2022-07-31 07:35:04,047] INFO Logging initialized @1354ms (org.eclipse.jetty.util.log)
+[2022-07-31 07:35:04,084] INFO == Spark has ignited ... (spark.embeddedserver.jetty.EmbeddedJettyServer)
+[2022-07-31 07:35:04,084] INFO >> Listening on 0.0.0.0:4567 (spark.embeddedserver.jetty.EmbeddedJettyServer)
+[2022-07-31 07:35:04,088] INFO jetty-9.3.6.v20151106 (org.eclipse.jetty.server.Server)
+[2022-07-31 07:35:04,124] INFO Started ServerConnector@6c1aef13{HTTP/1.1,[http/1.1]}{0.0.0.0:4567} (org.eclipse.jetty.server.ServerConnector)
+[2022-07-31 07:35:04,124] INFO Started @1433ms (org.eclipse.jetty.server.Server)

@@ -1,6 +1,9 @@
 package common.period;
 
-// Period represents from when.
+/***
+ * Period is a suffix interval of time on which rules like to solve queries.
+ * It means From $amount of $interval up to now solve on $ohlc.
+ */
 public class Period {
     private final int amount;
     private final Interval interval;

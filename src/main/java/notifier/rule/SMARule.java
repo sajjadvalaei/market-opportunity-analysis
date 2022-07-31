@@ -6,9 +6,12 @@ import notifier.exception.NotEnoughDataException;
 
 import java.util.Arrays;
 
+/***
+ * Handle functions that are explained in its interface.
+ */
 public class SMARule implements Rule {
     private Period[] period = new Period[2];
-    private SMARuleMemoryService memory;
+    private SMARuleMemory memory;
     public SMARule(Period period0, Period period1) {
         period[0] = period0;
         period[1] = period1;
@@ -35,15 +38,15 @@ public class SMARule implements Rule {
     }
 
     @Override
-    public RuleMemoryService getMemory() {
+    public RuleMemory getMemory() {
         return memory;
     }
 
     @Override
-    public void setMemory(RuleMemoryService memory) throws MemoryNotAcceptableException {
-        if (!(memory instanceof SMARuleMemoryService))
+    public void setMemory(RuleMemory memory) throws MemoryNotAcceptableException {
+        if (!(memory instanceof SMARuleMemory))
             throw new MemoryNotAcceptableException("Memory " + memory.getClass().getName() + " is not suitable for this class "+ getClass().getName());
-        this.memory = (SMARuleMemoryService) memory;
+        this.memory = (SMARuleMemory) memory;
     }
 
     @Override
