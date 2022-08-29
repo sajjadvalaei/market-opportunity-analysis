@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+logs/*
+Market-Opportunity-Analysis/logs/*
 
 ### IntelliJ IDEA ###
 .idea/workspace.xml
@@ -13,8 +15,6 @@ target/
 *.iws
 *.iml
 *.ipr
-logs/*
-Market-Opportunity-Analysis/logs/*
 
 ### Eclipse ###
 .apt_generated
