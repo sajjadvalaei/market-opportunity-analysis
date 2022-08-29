@@ -2,8 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-logs/*
-Market-Opportunity-Analysis/logs/*
+logs/**
+Market-Opportunity-Analysis/logs/**
 
 ### IntelliJ IDEA ###
 .idea/workspace.xml
