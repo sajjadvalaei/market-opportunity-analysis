@@ -13,6 +13,8 @@ target/
 *.iws
 *.iml
 *.ipr
+logs/
+Market-Opportunity-Analysis/logs/
 
 ### Eclipse ###
 .apt_generated
